@@ -17,17 +17,13 @@ $(document).ready(function () {
             action = true;
         }
     });
-
-    function populateInput(text) {
-        input.val(text);
-    }
-
     function recognize() {
         window.ya.speechkit.settings.apikey = 'c4936434-79dd-4fd4-9edf-86c25699c967';
         ya.speechkit.recognize({
             // Функция будет вызвана, когда распознавание завершится.
             doneCallback: function(text) {
-                populateInput(text);
+                if (text!="")
+                    input.val(text);
                 console.log("Финальный результат распознавания: " + text);
             },
             // Функция вызовется, как только сессия будет инициализирована.
